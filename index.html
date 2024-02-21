@@ -1,0 +1,388 @@
+<html class="" lang="en">
+   
+ <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+      <link rel="stylesheet" href="2.css">
+ </head>
+
+   <body class="is-mac ng-scope actual-exam-ui" ng-app="testApp" ng-class="baseUIClassName">
+      <input type="hidden" id="siteLang" value="english" autocomplete="off">
+      <style>
+         #anti-flick-loader{
+         display:none;
+         }
+      </style>
+      <style>
+         .async-hide body > *:not(#anti-flick-loader){
+         opacity: 0 !important;
+         }
+         /*body > *:not(#anti-flick-loader){
+         //causes issues with other elements which have opacity or transition
+         opacity: 1;
+         transition: opacity 0.2s ease-in-out;
+         }*/
+         .async-hide body #anti-flick-loader{
+         display:block;
+         }
+      </style>
+      <title ng-bind="pageTitle ? pageTitle : &#39;@SurajKadian&#39;" class="ng-binding">@SurajKadian</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="theme-color" content="#1fbad6">
+      <meta name="description" content="I am sumraj">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="theme-color" content="#1fbad6">
+      <div ng-view="" class="ng-scope">
+         <!-- ngIf: !isJeeTestInterfaceUsed -->
+         <div ng-if="!isJeeTestInterfaceUsed" class="ng-scope">
+            <div class="label bg-skipped ng-hide" id="networkAlert" ng-show="isNetworkAlertVisible" style="z-index:100;display: inline;position: absolute;left: 25%;top: 5px;padding: 5px;">Network disconnected. Retrying...<br>You can continue to attempt the test, please <b>DO NOT REFRESH</b> the page and just make sure you are connected to network before submitting the test.</div>
+            <div class="label bg-skipped ng-binding ng-hide" id="MathJaxAlert" ng-bind-html="mathJaxErrorMsgHTML" ng-show="isMathJaxAlertVisible()" style="z-index:100;display: inline;position: absolute;left: 40%;top: 45px;padding: 5px;"></div>
+            <div class="tb-main-header">
+               <!-- ngIf: !isLiveTest() && !fromOrganisation -->
+               <p class="test-title pull-left hidden-sm mar-t16 mar-l16 mar-b0 test-mwebtitle ng-binding">SSC CHSL Typing Test 3</p>
+            </div>
+            <div id="page" ng-show="isInitialized()" class="u-mob-sidebar typing-test-view" ng-class="{&#39;railway-test-interface&#39;:isRailwayTestInterfaceUsed, &#39;asm-test-view&#39;: isASMInterface,&#39;typing-test-view&#39;:hasTypingTest}" scroll="">
+               <div class="tp-left-box">
+                  <div class="test-sections-list">
+                     <!-- ngIf: !isASMInterface -->
+                     <h5 class="sl-title ng-scope" ng-if="!isASMInterface">Sections</h5>
+                     <!-- end ngIf: !isASMInterface --><!-- ngIf: !isASMInterface -->
+                     <div class="sl-inner ng-scope" ng-if="!isASMInterface">
+                        <!-- ngIf: test.containOptionalSections && test.chooseOptionalSecInTest --><!-- ngIf: test.containOptionalSections && !test.chooseOptionalSecInTest || !test.containOptionalSections -->
+                        <ng-container ng-if="test.containOptionalSections &amp;&amp; !test.chooseOptionalSecInTest || !test.containOptionalSections" class="ng-scope">
+                           <button ng-show="test.sections.length &gt; 6" ng-click="scrollSectionLeft()" type="button" class="btn card-scroll-btn course-nav-scroll intentional-outline left test-scroll-btn-left ng-hide" data-scroll="left">
+                              <svg width="17" height="17" viewBox="0 0 17 17">
+                                 <path fill="#86A1AE" d="M11.896 12.604L7.698 8.396l4.198-4.207-1.292-1.293-5.5 5.5 5.5 5.5z" fill-rule="evenodd"></path>
+                              </svg>
+                           </button>
+                           <ul id="sectionNavTabs" tb-auto-scroll="" class="nav nav-pills sections-list" ng-class="{&#39;height-100&#39;: isOptionalSectionQuestion(currentQuestion.sSNo)}">
+                              <!-- ngRepeat: section in test.sections track by $index -->
+                              <li class="dropdown ng-scope active" ng-repeat="section in test.sections track by $index" ng-class="{&#39;active&#39; : currentQuestion.sSNo - 1 == $index, &#39;disabled&#39;: !isActiveSection($index)}" ng-click="jumpToLastViewedQuestionInSection($index + 1)">
+                                 <a data-target="#section0" class="question-attempted">
+                                    <span class="hidden-xs ng-binding">Typing Test</span> <span class="visible-xs ng-binding">Typ</span> <!-- ngIf: isOptionalSectionQuestion(currentQuestion.sSNo) -->
+                                 </a>
+                                 <!-- ngIf: isASMInterface -->
+                              </li>
+                              <!-- end ngRepeat: section in test.sections track by $index -->
+                           </ul>
+                           <button ng-show="test.sections.length &gt; 6" ng-click="scrollSectionRight()" type="button" class="btn card-scroll-btn course-nav-scroll intentional-outline left test-scroll-btn-right ng-hide" data-scroll="left">
+                              <svg width="17" height="17" viewBox="0 0 17 17">
+                                 <path fill="#86A1AE" d="M5.104 12.604l4.198-4.208L5.104 4.19l1.292-1.293 5.5 5.5-5.5 5.5z" fill-rule="evenodd"></path>
+                              </svg>
+                           </button>
+                        </ng-container>
+                        <!-- end ngIf: test.containOptionalSections && !test.chooseOptionalSecInTest || !test.containOptionalSections -->
+                     </div>
+                     <!-- end ngIf: !isASMInterface --><!-- ngIf: isASMInterface -->
+                  </div>
+                  <!-- ngIf: isSubSectionPresentForIndex(currentQuestion.sSNo - 1) -->
+                  <div class="mob-question-holder" ng-class="{&#39;holder-section&#39;: isSubSectionPresentForIndex(currentQuestion.sSNo - 1)}">
+                     <div id="mainBox" class="test-qpip-holder">
+                        <!-- ngIf: isCurTab('question') -->
+                        <div class="qpip-inner ng-scope" id="questions" ng-if="isCurTab(&#39;question&#39;)">
+                           <div class="header">
+                              <div class="header-inner">
+                                 <div class="row">
+                                    <!-- ngIf: !isASMInterface -->
+                                    <div class="col-xs-3 tp-ques-number pad-r0 pad-t16 ng-binding ng-scope" ng-if="!isASMInterface">Que<span class="hidden-xs">stion</span> No. 1</div>
+                                    <!-- end ngIf: !isASMInterface --><!-- ngIf: isASMInterface -->
+                                    <div class="col-xs-9 d-flex tp-pos-neg-marks pad-l0" ng-class="{&#39;asm-ins-btn&#39;:isASMInterface &amp;&amp; hasInstructions }">
+                                       <!-- ngIf: !hasTypingTest && !isASMInterface --><!-- ngIf: !hasTypingTest --><!-- ngIf: !hasTypingTest && languages.length && languages.length >= 1 --><!-- ngIf: !isASMInterface -->
+                                       <report-cta ng-if="!isASMInterface" qid="6430203ecc8388911240a55d" chapter-id="" test-id="6426d2c8686c21b93686df14" course-id="566947a4a7b57b398faca54b" lang="en" options="Wrong Question,Formatting Issue,Wrong Translation,Others" btn-type="" module-type="test" class="report-this-question ng-scope ng-isolate-scope">
+                                          <div class="tb-report-component dropdown" ng-class="{&#39;state-reported&#39;: hasReported()}">
+                                             <button ng-click="openReportModal($event)" class="ml-0 px-0 btn outline-none d-flex" type="button" data-toggle="dropdown" ng-class="{&#39;report-more-vert&#39; : reportBtnType == &#39;report-more-vert&#39;}" id="report-modal">
+                                                <div class="tb-more-dot"></div>
+                                                <span class="tb-report">
+                                                   <svg width="15" height="12" viewBox="0 0 17 16">
+                                                      <defs>
+                                                         <path id="path-1" d="M0 0h17v16H0z"></path>
+                                                      </defs>
+                                                      <g id="Brainstorming" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                         <g id="Icons-/-Basic-/-Report">
+                                                            <mask id="mask-2" fill="#fff">
+                                                               <use xlink:href="#path-1"></use>
+                                                            </mask>
+                                                            <path d="M9.537 11.194c0 .595-.474 1.088-1.046 1.088-.572 0-1.045-.493-1.045-1.088v-.103c0-.595.473-1.088 1.045-1.088s1.046.493 1.046 1.088v.103zm-2.032-7.23c0-.41.316-.74.71-.74h.552c.395 0 .71.33.71.74v3.944c0 .41-.315.739-.71.739h-.552c-.394 0-.71-.329-.71-.74V3.965zm9.172 2.773l-3.038-5.484A2.41 2.41 0 0 0 11.55 0H5.454c-.868 0-1.657.472-2.091 1.253L.325 6.737a2.614 2.614 0 0 0 0 2.526l3.038 5.484A2.41 2.41 0 0 0 5.453 16h6.076c.868 0 1.657-.472 2.09-1.253l3.038-5.484c.454-.78.454-1.746.02-2.526z" id="Fill-1" fill="#86A1AE" mask="url(#mask-2)"></path>
+                                                         </g>
+                                                      </g>
+                                                   </svg>
+                                                </span>
+                                                <span class="help-note report ml-1 tb-text-grey display-6 hidden-xs ng-scope" translate="">Report</span> <span class="help-note reported ml-1 tb-text-grey display-6 hidden-xs ng-scope" translate="">Reported</span>
+                                             </button>
+                                             <ul class="dropdown-menu dropdown-menu-right" ng-class="{&#39;show&#39;: showReport}" id="report-options">
+                                                <!-- ngRepeat: reportType in reportTypeArr -->
+                                                <li ng-repeat="reportType in reportTypeArr" class="ng-scope"><a class="dropdown-item ng-binding" ng-click="setReportType(reportType, question, $event)">Wrong Question</a></li>
+                                                <!-- end ngRepeat: reportType in reportTypeArr -->
+                                                <li ng-repeat="reportType in reportTypeArr" class="ng-scope"><a class="dropdown-item ng-binding" ng-click="setReportType(reportType, question, $event)">Formatting Issue</a></li>
+                                                <!-- end ngRepeat: reportType in reportTypeArr -->
+                                                <li ng-repeat="reportType in reportTypeArr" class="ng-scope"><a class="dropdown-item ng-binding" ng-click="setReportType(reportType, question, $event)">Wrong Translation</a></li>
+                                                <!-- end ngRepeat: reportType in reportTypeArr -->
+                                                <li ng-repeat="reportType in reportTypeArr" class="ng-scope"><a class="dropdown-item ng-binding" ng-click="setReportType(reportType, question, $event)">Others</a></li>
+                                                <!-- end ngRepeat: reportType in reportTypeArr -->
+                                             </ul>
+                                          </div>
+                                       </report-cta>
+                                       <!-- end ngIf: !isASMInterface -->
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="hidden-xs text-size-resize show-on-railway ng-binding">Text Size <button type="button" class="btn js-font-size fs-decrease"><small>A<sup>-</sup></small></button> <button type="button" class="btn js-font-size fs-increase">A<sup>+</sup></button></div>
+                           </div>
+                           <!-- ngIf: !hasTypingTest && !test.sections[currentQuestion.sSNo-1].isNonQuestionSection --><!-- ngIf: hasTypingTest -->
+                           <div id="question-box" ng-if="hasTypingTest" class="typing-question body slim-scrollbar ng-scope">
+                              <div class="typing-question__box mar-t12 col-lg-offset-2">
+                                 <div>
+                                    <label for="question">Text</label>
+                                    <div>
+                                       <div class="question slim-scrollbar ng-binding" ng-bind-html="getQuestionDesc(currentQuestion.sSNo, currentQuestion.qSNo, $root.lang.name)">the countries comprising the eurozone skyrocketing.</div>
+                                    </div>
+                                 </div>
+                                 <div class="mar-t24">
+                                    <div><textarea spellcheck="false" id="answer" class="slim-scrollbar ng-pristine ng-untouched ng-valid ng-empty" ng-model="$parent.typingTestAnswer.value" ng-keyup="getTypingTestAnswer($event)" ng-keydown="getTypingTestAnswer($event)" name="answer" type="text" placeholder="*Start Typing Here*"></textarea></div>
+                                 </div>
+                                 <div class="input-info">
+                                    <!-- ngIf: typingTestAnswer.value --><!-- ngIf: typingTestAnswer.value -->
+                                 </div>
+                              </div>
+                           </div>
+                           <!-- end ngIf: hasTypingTest --><!-- ngIf: !hasTypingTest && test.sections[currentQuestion.sSNo-1].isInstruction -->
+                           <div class="footer mob-button-footer on-test-page">
+                              <!-- ngIf: !test.sections[currentQuestion.sSNo-1].isNonQuestionSection -->
+                              <div class="footer-inner hide-on-railway ng-scope" ng-if="!test.sections[currentQuestion.sSNo-1].isNonQuestionSection">
+                                 <button type="button" class="btn btn-info-test mar-t0 ng-hide" ng-show="!hasTypingTest &amp;&amp; !isNoShowSection() &amp;&amp; !isASMInterface" ng-click="bookmarkAndNextBtnPressed()">Mark for Review <span class="temp-text">&amp; Next</span><span class="icon"></span></button> <button type="button" class="btn btn-info-test mar-t0 ng-hide" ng-show="!hasTypingTest &amp;&amp; !isNoShowSection() &amp;&amp; !isSpeedComprehension()" ng-click="clearResponse()">Clear <span class="temp-text">Response</span></button> <!-- ngIf: isASMInterface && test.isSectionalSubmit --> <!-- ngIf: isASMInterface && !isFixedComprehension() --><button type="button" class="btn btn-theme pull-right mar-t0 ng-binding ng-hide" ng-show="!hasTypingTest &amp;&amp; !isSpeedComprehension() &amp;&amp; !isNoShowSection() &amp;&amp; !isInEndofSection()" ng-click="saveAndNextBtnPressed(false, &#39;&#39;, true)">Save <span>&amp; Next</span><span class="icon">→</span></button> <!-- ngIf: !isSpeedComprehension() && !isNoShowSection() && isASMInterface && currentQuestion.qSNo > 10 --> <!-- ngIf: (isSpeedComprehension() && !isASMInterface) --> <!-- ngIf: isASMInterface && !test.isSectionalSubmit -->
+                              </div>
+                              <!-- end ngIf: !test.sections[currentQuestion.sSNo-1].isNonQuestionSection --><!-- ngIf: test.sections[currentQuestion.sSNo-1].isInstruction --><!-- ngIf: !isASMInterface -->
+                              <div class="footer-inner railway-footer-inner show-on-railway ng-scope" ng-if="!isASMInterface">
+                                 <button type="button" class="btn btn-info-outline-test" ng-show="!isSpeedComprehension() &amp;&amp; !isNoShowSection()" ng-click="saveAndPreviousBtnPressed()">Save &amp; Previous</button> <!-- ngIf: !isNumerical() -->
+                                 <span class="d-inline-block option-btn-box counter-reset ng-scope" ng-if="!isNumerical()">
+                                    <!-- ngRepeat: option in getOptions() track by $index -->
+                                 </span>
+                                 <!-- end ngIf: !isNumerical() --> <button type="button" class="btn btn-info-outline-test ng-hide" ng-show="!hasTypingTest &amp;&amp; !isSpeedComprehension() &amp;&amp; !isNoShowSection()" ng-click="saveAndNextBtnPressed(isQuestionBookmarked())">Save &amp; Next</button> <button ng-show="!!hasTypingTest" type="button" class="btn btn-info-test pad-0"><label class="ui-form__element"><input type="checkbox" ng-show="!isNoShowSection()" ng-checked="isQuestionBookmarked()" ng-click="bookmarkBtnPressed()"> <span>Mark for Review</span></label></button> <button type="button" class="btn btn-theme ng-hide" ng-show="!hasTypingTest &amp;&amp; !isNoShowSection()" ng-click="clearResponse()">Erase Answer</button>
+                              </div>
+                              <!-- end ngIf: !isASMInterface --><!-- ngIf: !test.sections[currentQuestion.sSNo-1].isNonQuestionSection -->
+                              <div class="footer-inner-ssc text-center ng-scope" ng-if="!test.sections[currentQuestion.sSNo-1].isNonQuestionSection">
+                                 <button type="button" class="btn btn-gray-dark pull-left mar-l16" ng-class="{&#39;mar-l16&#39;: test.sectionTimeSharedFlag}" ng-click="saveAndPreviousBtnPressed()"><i class="tb-icon tb-arrow-left-thin"></i> Prev<span class="temp-text">ious</span> Que<span class="temp-text">stion</span></button> <button type="button" class="btn btn-gray-dark pull-left ng-hide" ng-show="!hasTypingTest" ng-click="saveAndNextBtnPressed(false)">Next Que<span class="temp-text">stion</span> <i class="tb-icon tb-arrow-right-thin"></i></button> <!-- ngIf: !hasTypingTest --> <button type="button" class="btn btn-warning toggle-que-tag" ng-click="bookmarkBtnPressed()" ng-class="{&#39;que-tagged&#39;:isBookmarked(currentQuestion.sSNo, currentQuestion.qSNo)}"><span class="que-tag">Tag</span> <span class="que-de-tag">De-Tag</span></button>
+                              </div>
+                              <!-- end ngIf: !test.sections[currentQuestion.sSNo-1].isNonQuestionSection -->
+                           </div>
+                        </div>
+                        <!-- end ngIf: isCurTab('question') --><!-- ngIf: isCurTab('qpaper') --><!-- ngIf: isCurTab('instructions') --><!-- ngIf: isCurTab('profile') --><!-- ngIf: isCurTab('switchconfirmfinal') || isCurTab('switchreset') || isCurTab('resetconfirm') -->
+                     </div>
+                  </div>
+                  <div class="sidebar-open-bg"></div>
+                  <button type="button" class="btn btn-theme navbar-toggle js-trigger-toggle-sidebar"><span class="tb-icon tb-menu"></span> <span class="tb-icon tb-clear"></span></button>
+               </div>
+               <div id="sidebar" class="tp-right-box">
+                  <button type="button" class="toggle-sidebar-btn js-toggle-sidebar-btn"><i class="tb-icon tb-arrow-left-thin"></i> <i class="tb-icon tb-arrow-right-thin"></i></button>
+                  <div class="sidebar-content">
+                     <div class="student-details"><span class="img" ng-style="{&#39;background-image&#39;: &#39;url(&#39; + dpSrc + &#39;)&#39;}" style="background-image: url(&quot;//cdn.testbook.com/static/dp/6314d049275afc259d2859f2_1677406723_tb.jpeg&quot;);"></span> <span class="ng-binding">Bahlol</span></div>
+                     <div class="q-possible-states hide-on-railway">
+                        <div class="col-xs-4 pad-r0"><span class="u-legend-indicator attempted ng-binding">0</span> <span class="qps-state"><span>Answered</span><span>Attempted</span></span></div>
+                        <div class="col-xs-4"><span class="u-legend-indicator bookmarked ng-binding">0</span> <span class="qps-state"><span>Marked</span><span>Tagged</span></span></div>
+                        <div class="col-xs-4 pad-l0"><span class="u-legend-indicator ng-binding">1</span> <span class="qps-state">Not Visited</span></div>
+                        <div class="col-xs-7 pad-r0"><span class="u-legend-indicator bookmarked attempted ng-binding">0</span> <span class="qps-state"><span>Marked and answered</span><span>Attempted &amp; Tagged</span></span></div>
+                        <div class="col-xs-5 pad-l0"><span class="u-legend-indicator skipped ng-binding">0</span> <span class="qps-state"><span>Not Answered</span><span>Unattempted</span></span></div>
+                     </div>
+                     <div class="q-possible-states legend-area show-on-railway">
+                        <div class="col-xs-6"><span class="new-legend answered ng-binding">0</span> <span class="qps-state">Questions Answered</span></div>
+                        <div class="col-xs-6"><span class="new-legend not-answered ng-binding">0</span> <span class="qps-state">Not Answered</span></div>
+                        <div class="col-xs-6"><span class="new-legend reviewed answered ng-binding">0</span> <span class="qps-state">Review Answered</span></div>
+                        <div class="col-xs-6"><span class="new-legend reviewed ng-binding">0</span> <span class="qps-state">Review Not Answered</span></div>
+                     </div>
+                     <!-- ngIf: isOptionalSectionQuestion(currentQuestion.sSNo) -->
+                     <div class="questions-number-holder questions-number-section" ng-class="{ &#39;cuet-position&#39;: isOptionalSectionQuestion(currentQuestion.sSNo)}">
+                        <!-- ngRepeat: section in test.sections track by $index -->
+                        <div class="qnh-inner slim-scrollbar ng-scope" ng-show="currentQuestion.sSNo - 1 == $index" id="section0" ng-repeat="section in test.sections track by $index">
+                           <!-- ngIf: section.title != '' -->
+                           <div class="mob-sidebar-section ng-binding ng-scope" ng-if="section.title != &#39;&#39;"><span class="ng-binding">Section :</span> Typing Test</div>
+                           <!-- end ngIf: section.title != '' --><!-- ngIf: !section.subsections -->
+                           <ul class="questionList slim-scrollbar hide-on-railway ng-scope" ng-if="!section.subsections">
+                              <!-- ngRepeat: question in section.questions track by $index -->
+                              <li class="label ng-binding ng-scope current-question" ng-repeat="question in section.questions track by $index" ng-class="{ &#39;bookmarked&#39; : isBookmarked($parent.$index +1, $index+1), &#39;attempted&#39; : isAttempted($parent.$index +1, $index+1), &#39;skipped&#39; : isSkipped($parent.$index +1, $index+1), &#39;current-question&#39;: isCurrentQuestion($parent.$index + 1, $index + 1) }" ng-click="sideBarItemClicked($parent.$index +1, $index+1)">1</li>
+                              <!-- end ngRepeat: question in section.questions track by $index -->
+                           </ul>
+                           <!-- end ngIf: !section.subsections --><!-- ngRepeat: item in section.subsections -->
+                           <div class="questionList-states-railway show-on-railway">
+                              <ul>
+                                 <!-- ngRepeat: question in section.questions track by $index -->
+                                 <li class="new-legend ng-binding ng-scope current" ng-repeat="question in section.questions track by $index" ng-class="{ &#39;reviewed&#39; : isBookmarked($parent.$index +1, $index+1), &#39;answered&#39; : isAttempted($parent.$index +1, $index+1), &#39;not-answered&#39;: isSkipped($parent.$index + 1, $index + 1), &#39;current&#39;: isCurrentQuestion($parent.$index + 1, $index + 1) }" ng-click="sideBarItemClicked($parent.$index +1, $index+1)">1</li>
+                                 <!-- end ngRepeat: question in section.questions track by $index -->
+                              </ul>
+                           </div>
+                        </div>
+                        <!-- end ngRepeat: section in test.sections track by $index --><!-- ngIf: test.isSectionalSubmit && ((sectionalSummary.length - 1) !== activeSectionIndex) -->
+                     </div>
+                  </div>
+                  <div class="marks-action">
+                     <ul id="mainBtnBox" class="main-btn-box" role="tablist">
+                        <li><button type="button" class="btn btn-info-test btn-block ng-binding" ng-click="setTab(&#39;qpaper&#39;)">Question Paper</button></li>
+                        <li><button type="button" class="btn btn-info-test btn-block ng-binding" ng-click="getDynamicInstructions()">Instructions</button></li>
+                     </ul>
+                     <button type="button" class="btn btn-theme btn-block for-all-exams ng-binding" ng-click="submitBtnPressed()">Submit Test</button> <button type="button" class="btn btn-yellow-green btn-block for-ssc ng-binding" ng-click="submitBtnPressed()">Submit Test</button>
+                  </div>
+               </div>
+            </div>
+            <div class="calc-pause">
+               <!-- ngIf: isShowCalculator --><button type="button" id="testFullScreenToggle" class="btn btn-default hidden-xs ng-binding">Enter Full Screen</button> <button type="button" class="btn ng-binding" ng-click="pauseBtnPressed()" ng-show="!isLiveTest()">Pause</button>
+            </div>
+            <div class="test-page-timer">
+               <h4 class="mar-0 text-nowrap" ng-class="{&#39;show-timer-alert&#39;: showTimerAlert}">
+                  <span class="hidden-xs hidden-sm mar-r8 align-middle ng-binding">Time Left</span><!-- ngIf: test.sectionTimeSharedFlag -->
+                  <livetest-timer ng-if="test.sectionTimeSharedFlag" test-duration="599" is-test-submitted="false" is-timer-paused="false" test-time-over-ptr="testTimeOver" resume-ptr="resumeTimerCB" hide-zero="n" show-alert="$parent.showTimerAlert" class="ng-scope ng-isolate-scope"><span class="timer"><span class="label label-default ng-binding">00</span> : <span class="label label-default ng-binding">09</span> : <span class="label label-default ng-binding">35</span></span></livetest-timer>
+                  <!-- end ngIf: test.sectionTimeSharedFlag --><!-- ngIf: !test.sectionTimeSharedFlag -->
+               </h4>
+            </div>
+            <div class="modal" id="summaryModal" ng-class="{&#39;asm-summary&#39;: isASMInterface}" tabindex="-1" role="dialog" aria-labelledby="summaryLabel" aria-hidden="true" data-backdrop="static">
+               <div class="modal-dialog modal-lg">
+                  <div class="modal-content" ng-class="{&#39;asm-scroll-view&#39;: isASMInterface}">
+                     <!-- ngIf: isASMInterface --><!-- ngIf: !isASMInterface -->
+                     <div class="modal-body ng-scope" ng-if="!isASMInterface">
+                        <h4 class="text-center" ng-show="!isTestPaused"><small>Submit your test</small></h4>
+                        <div class="table-responsive">
+                           <table class="table table-bordered">
+                              <thead>
+                                 <tr>
+                                    <th translate="" class="ng-scope">Section</th>
+                                    <th translate="" class="ng-scope">No. of questions</th>
+                                    <th translate="" class="ng-scope">Answered</th>
+                                    <th translate="" class="ng-scope">Not Answered</th>
+                                    <th translate="" class="ng-scope">Marked for Review</th>
+                                    <th translate="" class="ng-scope">Not Visited</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <!-- ngRepeat: section in test.sections track by $index --><!-- ngIf: test.containOptionalSections && !test.chooseOptionalSecInTest || !test.containOptionalSections -->
+                                 <tr ng-repeat="section in test.sections track by $index" ng-if="test.containOptionalSections &amp;&amp; !test.chooseOptionalSecInTest || !test.containOptionalSections" class="ng-scope">
+                                    <td data-prompt="Section" class="ng-binding">Typing Test</td>
+                                    <td data-prompt="No. of questions" class="ng-binding">1</td>
+                                    <td data-prompt="Answered" class="ng-binding">0</td>
+                                    <td data-prompt="Not Answered" class="ng-binding">0</td>
+                                    <td data-prompt="Marked for Review" class="ng-binding">0</td>
+                                    <td data-prompt="Not Visited" class="ng-binding">1</td>
+                                 </tr>
+                                 <!-- end ngIf: test.containOptionalSections && !test.chooseOptionalSecInTest || !test.containOptionalSections --><!-- end ngRepeat: section in test.sections track by $index --><!-- ngRepeat: section in test.allSections track by $index -->
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <!-- end ngIf: !isASMInterface --><!-- ngIf: isASMInterface --><!-- ngIf: isTimerPaused || !isASMInterface -->
+                     <div class="modal-footer ng-scope" ng-if="isTimerPaused || !isASMInterface"><a ng-show="isTestPaused &amp;&amp; !isTestSubmitted &amp;&amp; !isInClass &amp;&amp; fromAttempted" href="https://testbook.com/attempted-tests/" class="btn btn-theme mar-t0 pull-left ng-scope ng-hide" translate="">Tests</a> <a ng-show="isTestPaused &amp;&amp; !isTestSubmitted &amp;&amp; !isInClass &amp;&amp; fromLivePage" href="https://testbook.com/free-live-tests-and-quizzes/" class="btn btn-theme mar-t0 pull-left ng-scope ng-hide" translate="">Tests</a> <a ng-show="isTestPaused &amp;&amp; !isTestSubmitted &amp;&amp; !isInClass &amp;&amp; fromLiveAttempted" href="https://testbook.com/free-live-tests-and-quizzes/attempted/" class="btn btn-theme mar-t0 pull-left ng-scope ng-hide" translate="">Tests</a> <a ng-show="isTestPaused &amp;&amp; !isTestSubmitted &amp;&amp; !isInClass &amp;&amp; fromSearch" href="https://testbook.com/search/typing" class="btn btn-theme mar-t0 pull-left ng-scope ng-hide" translate="">Tests</a> <a ng-show="isTestPaused &amp;&amp; !isTestSubmitted &amp;&amp; !isInClass &amp;&amp; fromTestSeries" href="https://testbook.com/ssc-cgl-typing/test-series" class="btn btn-theme mar-t0 pull-left ng-scope ng-hide" translate="">Tests</a> <a ng-show="isTestPaused &amp;&amp; !isTestSubmitted &amp;&amp; !isInClass &amp;&amp; fromScholarshipTest" href="https://testbook.com/ssc-cgl-typing/scholarship-test" class="btn btn-theme mar-t0 pull-left ng-scope ng-hide" translate="">Tests</a> <a ng-show="isTestPaused &amp;&amp; !isTestSubmitted &amp;&amp; !isInClass &amp;&amp; fromPyp" href="https://testbook.com/sc-cgl-typing/previous-year-papers" class="btn btn-theme mar-t0 pull-left ng-scope ng-hide" translate="">Tests</a> <a ng-show="isTestPaused &amp;&amp; !isTestSubmitted &amp;&amp; !isInClass &amp;&amp; !fromTestSeries &amp;&amp; !fromAttempted &amp;&amp; !fromPyp &amp;&amp; !fromScholarshipTest &amp;&amp; !fromLivePage &amp;&amp; !fromLiveAttempted &amp;&amp; !fromOrganisation" href="https://testbook.com/TS-ssc-cgl-typing/" class="btn btn-theme mar-t0 pull-left ng-scope ng-hide" translate="">Tests</a> <span ng-show="fromOrganisation &amp;&amp; isTestPaused &amp;&amp; !isTestSubmitted" class="btn btn-theme mar-t0 pull-left ng-scope ng-hide" translate="" ng-click="backBtnPressed()">Tests</span> <a ng-show="isTestPaused &amp;&amp; !isTestSubmitted &amp;&amp; isInClass" ng-href="" class="btn btn-theme mar-t0 pull-left ng-binding ng-hide"></a> <button ng-show="!isTestPaused" type="button" class="btn btn-theme mar-t0" data-dismiss="modal">Close</button> <button ng-show="isTestPaused &amp;&amp; !isTestSubmitted" type="button" class="btn btn-theme mar-t0 ng-hide" ng-click="resumeBtnPressed()" data-dismiss="modal">Resume Test</button> <button ng-show="!isTestPaused" ng-click="submitTest(false)" type="button" class="btn btn-theme mar-t0" data-dismiss="modal">Submit</button></div>
+                     <!-- end ngIf: isTimerPaused || !isASMInterface -->
+                  </div>
+               </div>
+            </div>
+            <div class="modal modal--instructions" id="instructionsModal">
+               <div class="modal-dialog" style="width: 80%">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                        <div class="modal-title ng-binding">Instructions</div>
+                        <a href="https://testbook.com/TS-ssc-cgl-typing/tests/6426d2c8686c21b93686df14?attemptNo=1#" class="modal-close" data-dismiss="modal" style="position: absolute;top: 1rem;right: 1rem;">
+                           <svg width="20" height="20" viewBox="0 0 20 20">
+                              <path d="M17 4.413L15.587 3 10 8.587 4.413 3 3 4.413 8.587 10 3 15.587 4.413 17 10 11.413 15.587 17 17 15.587 11.413 10z" fill-rule="evenodd"></path>
+                           </svg>
+                        </a>
+                     </div>
+                     <!-- ngIf: !isUsefulData -->
+                     <div class="modal-body ng-scope" ng-if="!isUsefulData">
+                        <div ng-bind-html="parseHtml(sectionToInstructionsMap[test.sections[currentQuestion.sSNo-1].sectionNumber].text)" class="ng-binding"></div>
+                     </div>
+                     <!-- end ngIf: !isUsefulData --><!-- ngIf: isUsefulData -->
+                  </div>
+               </div>
+            </div>
+            <!-- ngIf: isOptionalSectionSubmit -->
+            <div class="modal modal--skip" id="skipModal">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-body">
+                        <h4 class="text-center">In the actual exam you may not be allowed to submit sections/summary before the timer for the section ends.</h4>
+                        <div class="modal-footer d-flex"><button class="btn btn-theme" ng-click="proceedBtnClicked()">Proceed</button> <button class="btn btn-gray-1" data-dismiss="modal">Cancel</button></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="modal sectional-summary-modal" id="sectionalSummaryModal" tabindex="-1" role="dialog" aria-labelledby="summaryLabel" aria-hidden="true" data-backdrop="static">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-body">
+                        <h4 class="text-center ng-binding">Summary of Overall</h4>
+                        <div class="table-responsive">
+                           <table class="table mar-b0 mar-t24">
+                              <tbody>
+                                 <tr>
+                                    <td data-prompt="Sectional Time Left" text-align="left" class="summary-header">
+                                       <svg width="15" height="15" viewBox="0 0 18 18">
+                                          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                             <g id="web---submit-test" transform="translate(-571 -341)" fill="#89959B">
+                                                <g id="access-alarms" transform="translate(571 341)">
+                                                   <path d="M18 3.475L13.86 0l-1.17 1.337 4.14 3.475L18 3.475zM5.31 1.425L4.14.09 0 3.475l1.17 1.337 4.14-3.386zm4.14 4.1H8.1v5.346l4.23 2.584.72-1.069-3.6-2.138V5.525zM9 1.96C4.5 1.96.9 5.525.9 9.98.9 14.436 4.5 18 9 18s8.1-3.564 8.1-8.02c0-4.455-3.6-8.02-8.1-8.02zm0 14.258c-3.51 0-6.3-2.763-6.3-6.238 0-3.475 2.79-6.237 6.3-6.237s6.3 2.762 6.3 6.237-2.79 6.238-6.3 6.238z" id="Shape"></path>
+                                                </g>
+                                             </g>
+                                          </g>
+                                       </svg>
+                                       <span>Sectional Time Left:</span>
+                                    </td>
+                                    <td data-prompt="Timer" class="summary-text">
+                                       <!-- ngIf: !test.sectionTimeSharedFlag -->
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td data-prompt="Attempted" class="summary-header">
+                                       <svg width="15" height="15" viewBox="0 0 18 18">
+                                          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                             <g id="web---submit-test" transform="translate(-571 -399)" fill="#89959B">
+                                                <g id="check-circle-outline" transform="translate(571 399)">
+                                                   <path d="M5.31 7.29L4.05 8.55 8.1 12.6l9-9-1.26-1.26-7.74 7.74-2.79-2.79zM9 16.2c-3.96 0-7.2-3.24-7.2-7.2S5.04 1.8 9 1.8c.72 0 1.35.09 1.98.27L12.42.63C11.34.27 10.17 0 9 0 4.05 0 0 4.05 0 9s4.05 9 9 9 9-4.05 9-9h-1.8c0 3.96-3.24 7.2-7.2 7.2z" id="Shape"></path>
+                                                </g>
+                                             </g>
+                                          </g>
+                                       </svg>
+                                       Attempted
+                                    </td>
+                                    <td data-prompt="Attempted Count" class="summary-text"><span class="summary-text ng-binding"></span></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-prompt="Unattempted" class="summary-header">
+                                       <svg width="15" height="15" viewBox="0 0 18 18">
+                                          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                             <g id="web---submit-test" transform="translate(-571 -458)" fill="#89959B">
+                                                <g id="unknown-4" transform="translate(571 458)">
+                                                   <path d="M9 0C4.05 0 0 4.05 0 9s4.05 9 9 9 9-4.05 9-9-4.05-9-9-9zm0 16.2c-3.96 0-7.2-3.24-7.2-7.2S5.04 1.8 9 1.8s7.2 3.24 7.2 7.2-3.24 7.2-7.2 7.2zM5.4 9.9h7.2V8.1H5.4v1.8z" id="Shape"></path>
+                                                </g>
+                                             </g>
+                                          </g>
+                                       </svg>
+                                       Unattempted
+                                    </td>
+                                    <td data-prompt="Unattempted Count" class="summary-text ng-binding"></td>
+                                 </tr>
+                                 <tr>
+                                    <td data-prompt="Marked for Review" class="summary-header">
+                                       <svg width="15" height="15" viewBox="0 0 14 18">
+                                          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                             <g id="web---submit-test" transform="translate(-573 -517)" fill="#89959B">
+                                                <g id="bookmark-outline" transform="translate(573 517)">
+                                                   <path d="M12 0H2C.9 0 0 .9 0 2v16l7-3 7 3V2c0-1.1-.9-2-2-2zm0 15l-5-2.2L2 15V2h10v13z" id="Shape"></path>
+                                                </g>
+                                             </g>
+                                          </g>
+                                       </svg>
+                                       Marked
+                                    </td>
+                                    <td data-prompt="Marked for Review Count" class="summary-text ng-binding"></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <div class="modal-footer pad-b24">
+                        <h4 class="text-left ng-binding">Are you sure you want to submit this section?</h4>
+                        <button type="button" class="btn btn-primary btn-gray-1" ng-click="sectionalSummaryModalAction(false)">No</button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+     </body>
+</html>
